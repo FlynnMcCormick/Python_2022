@@ -61,7 +61,7 @@ print(float(10-1.1))
 print("\n")
 print(float(12.3-2))
 print("\n")
-print(6/5) #Qu 22 
+print(6/5)
 print("\n")
 print(6.1-5)
 print("\n")
@@ -74,3 +74,23 @@ print("\n")
 print('Flynn \n'*10)
 print("\n")
 print("5+10=" + str(5+10))
+print("\n")
+print("15/2=" + str(15/2))
+print("\n")
+print("30/2*5=" + str(30/2*5))
+print("\n")
+print("30/2*5=" + str(30/2*5))
+
+#Data type/ exe 5.4 /pg. 19 
+
+player_lives = 3 
+print("\n")
+user_username = flymc24
+print("\n")
+user_money = $5
+print("\n")
+user_num = 022 026 4585
+print("\n")
+user_name = Flynn
+print("\n")
+user_userage = 14
