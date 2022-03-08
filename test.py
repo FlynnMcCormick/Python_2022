@@ -16,7 +16,6 @@ print("A long time ago")
 print("candy crush")
 print("Digi Tec")
 
-"""
 
 #Data type/ exe 4.4 /pg. 17 
 print("")
@@ -82,15 +81,52 @@ print("\n")
 print("30/2*5=" + str(30/2*5))
 
 #Data type/ exe 5.4 /pg. 19 
-
+"""                                                                                                          
 player_lives = 3 
 print("\n")
-user_username = flymc24
+user_username = 'flymc24'
 print("\n")
-user_money = $5
+user_money = 5
 print("\n")
-user_num = 022 026 4585
+user_num =str('0220264585')
 print("\n")
-user_name = Flynn
+user_name = 'Flynn'
 print("\n")
-user_userage = 14
+user_age = 14
+print('\n')
+var_name = input(print('what is your name?'))
+print(f'your name is {var_name}')
+print('\n')
+var_age = input(print('what is your age?'))
+print(f'your age is {var_age}')
+print('\n')
+var_year = input(print('what is the year?'))
+print(f'the year is {var_year}')
+print('\n')
+var_age = input(print('what is your age?'))
+print(f'your age is {var_age}')
+print('\n')
+var_surname = input(print('what is your surname?'))
+print(f'your surname is {var_surname}')
+print('\n')
+var_school = input(print('what school do you go to?'))
+print(f'your school is {var_school}')
+print('\n')
+var_favfood = input(print('what is your favourite food?'))
+print(f'your favourite food is {var_favfood}')
+print('\n')
+var_pet name = input(print('what is your pets name?'))
+print(f'your pets name is {var_petname}')
+print('\n')
+var_num_blockchocolate = input(print('how many blocks of chocolate to you have?'))
+print(f'you have {var_var_num_blockchocolate} blocks of chocolate')
+print('\n')
+var_player_score = input(print('how many scores have you made?'))
+print(f'you made {var_player_score} scores')
+print('\n')
+var_highscore = input(print('what is your high score?'))
+print(f'your high score is {var_highscore}')
+print('\n')
+var_laps = input(print('how many laps have you done?'))
+print(f'you have done {var_laps} laps')
+print('\n')
