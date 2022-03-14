@@ -194,3 +194,4 @@ print('\n')
 user_pizza2 = input({user_pizza}*8)
 user_slices = input(f'{user_pizza2}/{user_friends}')
 print(f'each friend gets {user_slices}.')
+#qu2
