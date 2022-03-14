@@ -136,7 +136,7 @@ gear = 5
 print('\n')
 player_speed = 250
 print('\n')
-"""   
+  
 #Data type/ exe 6.3 /pg. 23 
 
 input('press any key')
@@ -172,10 +172,25 @@ print('\n')
 print('your noun is {user_noun}')
 print('\n')
 print('your verbs are {user_verb}')
-print('\n')
+
 user_age=input('whats your age?')
-print(int({user_age} + 10))
+print(int(f{user_age} + 10))
+print('\n')
+print({user_age} + 10)
 print('\n')
 print(2022 - {user_age})
-
-
+print('\n')
+user_apples=input(int('how many apples do you have?'))
+print('\n')
+user_friends=input(int('how many friends do you have?'))
+print('\n')
+print(f'{user_apples} / {user_friends}')
+print('\n')
+#Qu18 """ 
+user_pizza=int(input('how many pizzas do you want?'))
+print('\n')
+user_friends=int(input('how many people are coming over for pizza?'))
+print('\n')
+user_pizza2 = input({user_pizza}*8)
+user_slices = input(f'{user_pizza2}/{user_friends}')
+print(f'each friend gets {user_slices}.')
