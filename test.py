@@ -191,7 +191,7 @@ user_pizza=int(input('how many pizzas do you want?'))
 print('\n')
 user_friends=int(input('how many people are coming over for pizza?'))
 print('\n')
-user_pizza2 = input({user_pizza}*8)
+user_pizza2 = input(user_pizza*8)
 user_slices = input(f'{user_pizza2}/{user_friends}')
 print(f'each friend gets {user_slices}.')
 #qu2
