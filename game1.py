@@ -22,7 +22,31 @@ spaceship = Room("""
 	""")
 
 cargo = Room("""
-	the room is filled with buggies and research 
+	the room is filled with buggies and research equipment. 
+	""")
+
+quarters = Room("""
+	in the quarters there are bunk beds attatched to the walls 
+	""")
+
+hallway = Room("""
+	ther hall way is a baran area between areas
+	""")
+
+mess_hall = Room("""
+	in this room there are long tables streched across the room 
+	""")
+
+docking = Room("""
+	in this room there are several vessels from which others came from
+	""")
+
+bridge = Room("""
+	in the bridge there is the ships crew and capitain commanding the ship
+	""")
+
+escape_pods = Room("""
+	in this room there are escape pods ready to be activated 
 	""")
 
 current_room = space
@@ -63,15 +87,21 @@ def travel(direction):
 		print(current_room.exits())
 
 #defining the items
-Item.description = "" #this adds a blank description to each item
+Item.description = "" #this adds a blank discriptio to each item
 
+knife = Item("knife")
+knife.discription = "the knife is a jagered blade 6 inches long and been recently sharpened"
 
+red_keycard = Item("a red kecard","keycard")
+red_keycard = "a red keycard to open a door or a locker "
 
+headphones = Item("headphones")
+headphones.description = "red wireless headphones" 
 
+yellow_keycard = Item("a yellow keycard","yellow keycard")
+yellow_keycard = "a yellow keycard to open adoor or locker"
 
-
-
-
+current
 
 
 
