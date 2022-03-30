@@ -15,6 +15,33 @@ behind_cabbin("""
 	there is a axe stabbed inside of a log and a pile of wood sitting aroud the outside of the house 
 	""")
 
+tall_trees1("""
+	you are faced with tall trees streched across the path. the past leads north and south. 
+	""")
+
+tall_trees2("""
+	you are faced with tall trees streched across the path. the past leads north and south. 
+	""")
+
+tall_trees3("""
+	you are faced with tall trees streched across the path. the past leads east and west. 
+	""")
+
+tall_trees4("""
+	you are faced with tall trees streched across the path. the past leads east and west. 
+	""")
+
+tall_trees5("""
+	you are faced with tall trees streched across the path. the past leads east and west. 
+	""")
+
+village("""
+	you have found the village. there is a villager here. there are exits to the west.
+	""")
+
+
+
+
 #Define Connections
 #Define Items
 #Define Bags
