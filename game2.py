@@ -48,11 +48,11 @@ dungeon_enterance("""
 	""")
 
 Dungeon("""
-
+	you creep through the huge brick walls. the doors slam shut behind you. you see a cyclops. he looks at you through his large eye. you hve 2 options fight or die. 
 	""")
 #Define Connections
 
-current_room = spawn_area
+
 spawn_area.south = tall_trees4
 spawn_area.west = log_cabbin
 spawn_area.north = tall_trees3
@@ -65,10 +65,30 @@ tall_trees4.east = tall_trees2
 tall_trees4.west = tall_trees5
 tall_trees5.west = village
 #Define Items
+key = Item("key")
+key.discription = "the key is rusty and jagered "
+
+herb = Item('herb')
+herb.description = "these herbs are the ones the elder wanted"
+
+sword = Item('sword')
+sword.description ="thee who weleds this blade shall free this forrest of any monster in a single slach"
+
+
 #Define Bags
+
+
 #Add Items to Bags
+
+
 #Define any variables
+current_room = spawn_area
+
+inventory = bag()
+
+herb_count = 0
 #Binds 
+
 @when ("go DIRECTION")
 def travel(direction):
 	global current_room
@@ -92,6 +112,8 @@ def look():
 @when('pick up item')
 def pickup(item):
 	if item in current_room.items:
+		if item==herb:
+			herb_count = herb_count+1
 		t = current_room.item.take(item)
 		inventory.add(t)
 		print(f'you pick up the {item}')
