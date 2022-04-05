@@ -121,6 +121,23 @@ def pickup(item):
     	print(f'you dont see a {item}')
 
 
+@when('inventory')
+@when('show inventory')
+@when('what is in my pockets')
+def Player_inventory():
+	print('you are carrying')
+	for item in inventory:
+		print(item)
+
+@when('look at item')
+def look_at(item):
+	if item in inventory:
+		t = inventory.find(item)
+		print(t.description)
+	else:
+		print(f'you arent carrying an {item}')
+
+
 
 #Main Function
 
