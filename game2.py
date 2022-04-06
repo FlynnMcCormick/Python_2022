@@ -11,40 +11,33 @@ log_cabbin("""
 	there is a small cooking space in the south east corner of the house and a large bed covered in animal hide in the south west corner of the room. you see a door leading out to the west and a door leading to the east.
 	""")
 
-behind_cabbin("""
-	there is a axe stabbed inside of a log and a pile of wood sitting aroud the outside of the house 
-	""")
 
 tall_trees1("""
-	you are faced with tall trees streched across the path. the past leads north and east. 
+	you are faced with tall trees streched across the path. the past leads west. 
 	""")
 
 tall_trees2("""
-	you are faced with tall trees streched across the path. the past leads north and west. 
+	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
 tall_trees3("""
-	you are faced with tall trees streched across the path. the past leads east and west. 
+	you are faced with tall trees streched across the path. the past leads north and south.
 	""")
 
 tall_trees4("""
-	you are faced with tall trees streched across the path. the past leads east and west. 
+	you are faced with tall trees streched across the path. the past leads north and south. 
 	""")
 
 tall_trees5("""
 	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
-village("""
-	you have found the village. there is a villager here. there are exits to the west.
+tall_trees6("""
+	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
-ladder("""
-	there is a tall ladder that leads to a high part of the tree. 
-	""")
-
-dungeon_enterance("""
-	you hear a large roar comming from the dungeon. Enter if you dare. exits are to the west and east.
+elder_hut("""
+	you enter the hutt and are greeted by an eldely woman. she challenges you to find three herbs if you do and return to me i will reward you with a sword. 
 	""")
 
 Dungeon("""
@@ -57,13 +50,12 @@ spawn_area.south = tall_trees4
 spawn_area.west = log_cabbin
 spawn_area.north = tall_trees3
 spawn_area.east = ladder
-log_cabbin.west = behind_cabbin
-tall_trees3.west = dungeon_enterance
-tall_trees3.east = tall_trees1
-dungeon_enterance.west = Dungeon
-tall_trees4.east = tall_trees2
-tall_trees4.west = tall_trees5
-tall_trees5.west = village
+tall_trees2.east = dungeon
+tall_trees2.west = tall_trees1
+tall_trees3.north = tall_trees2
+tall_trees4.south = tall_trees5
+tall_trees5.west = tall_trees6
+
 #Define Items
 key = Item("key")
 key.discription = "the key is rusty and jagered "
@@ -136,6 +128,7 @@ def look_at(item):
 		print(t.description)
 	else:
 		print(f'you arent carrying an {item}')
+
 
 
 
