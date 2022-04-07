@@ -1,62 +1,60 @@
 from adventurelib import *
+Room.items = Bag()
 
-
-#Imports
-#Define Rooms
-spawn_area("""
+#Imports   #this is whee any imports are gonna be like music ect
+#Define Rooms    #this is where all toe room descriptions are 
+spawn_area = Room("""
 	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the east aswell as a track to the north and south. there is a shimmer to the east.
 	""")
 
-log_cabbin("""
+log_cabbin = Room("""
 	there is a small cooking space in the south east corner of the house and a large bed covered in animal hide in the south west corner of the room. you see a door leading out to the west and a door leading to the east.
 	""")
 
 
-tall_trees1("""
+tall_trees1 = Room("""
 	you are faced with tall trees streched across the path. the past leads west. 
 	""")
 
-tall_trees2("""
+tall_trees2 = Room("""
 	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
-tall_trees3("""
+tall_trees3 = Room("""
 	you are faced with tall trees streched across the path. the past leads north and south.
 	""")
 
-tall_trees4("""
+tall_trees4 = Room("""
 	you are faced with tall trees streched across the path. the past leads north and south. 
 	""")
 
-tall_trees5("""
+tall_trees5 = Room("""
 	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
-tall_trees6("""
+tall_trees6 = Room("""
 	you are faced with tall trees streched across the path. the past leads east and west. 
 	""")
 
-elder_hut("""
+elder_hut = Room("""
 	you enter the hutt and are greeted by an eldely woman. she challenges you to find three herbs if you do and return to me i will reward you with a sword. 
 	""")
 
-Dungeon("""
+Dungeon = Room("""
 	you creep through the huge brick walls. the doors slam shut behind you. you see a cyclops. he looks at you through his large eye. you hve 2 options fight or die. 
 	""")
-#Define Connections
-
-
+#Define Connections     #this is where the rooms connect to eachother so you can travel between them
 spawn_area.south = tall_trees4
 spawn_area.west = log_cabbin
 spawn_area.north = tall_trees3
-spawn_area.east = ladder
 tall_trees2.east = dungeon
 tall_trees2.west = tall_trees1
 tall_trees3.north = tall_trees2
 tall_trees4.south = tall_trees5
 tall_trees5.west = tall_trees6
 
-#Define Items
+#Define Items    #this is where i put all the descriptions for the items 
+Item.description = ""
 key = Item("key")
 key.discription = "the key is rusty and jagered "
 
@@ -67,19 +65,30 @@ sword = Item('sword')
 sword.description ="thee who weleds this blade shall free this forrest of any monster in a single slach"
 
 
-#Define Bags
+#Define Bags        #this is where i define the rooms that have items in themand give them bags to the items are in the room
+log_cabbin.items = bag()
 
+tall_trees1.items = bag()
 
-#Add Items to Bags
+tall_trees2.items = bag()
 
+tall_trees6.items = bag()
+#Add Items to Bags     #this is where i put the items into the "bags"
+log_cabbin.items.add(key)
 
-#Define any variables
+tall_trees1.items.add(herb)
+
+tall_trees2.items.add(herb)
+
+tall_trees6.items.add(herb)
+
+#Define any variables    #this is wheree all the variables are kept
 current_room = spawn_area
 
 inventory = bag()
 
 herb_count = 0
-#Binds 
+#Binds    #this is where the binds for the game are stored like the function to look or move
 
 @when ("go DIRECTION")
 def travel(direction):
@@ -109,8 +118,8 @@ def pickup(item):
 		t = current_room.item.take(item)
 		inventory.add(t)
 		print(f'you pick up the {item}')
-    else:
-    	print(f'you dont see a {item}')
+	else:
+		print(f'you dont see a {item}')
 
 
 @when('inventory')
@@ -130,21 +139,12 @@ def look_at(item):
 		print(f'you arent carrying an {item}')
 
 
-
-
 #Main Function
 
 
 
-
-
-
-
-
-
-
-
 def main():
+pritn(current_room)
 	start()
 
 
