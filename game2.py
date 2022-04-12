@@ -3,6 +3,9 @@ Room.items = Bag()
 
 #Imports   #this is whee any imports are gonna be like music ect
 #Define Rooms    #this is where all toe room descriptions are 
+
+
+
 spawn_area = Room("""
 	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the east aswell as a track to the north and south. there is a shimmer to the east.
 	""")
@@ -47,7 +50,7 @@ Dungeon = Room("""
 spawn_area.south = tall_trees4
 spawn_area.west = log_cabbin
 spawn_area.north = tall_trees3
-tall_trees2.east = dungeon
+tall_trees2.east = Dungeon
 tall_trees2.west = tall_trees1
 tall_trees3.north = tall_trees2
 tall_trees4.south = tall_trees5
@@ -65,14 +68,6 @@ sword = Item('sword')
 sword.description ="thee who weleds this blade shall free this forrest of any monster in a single slach"
 
 
-#Define Bags        #this is where i define the rooms that have items in themand give them bags to the items are in the room
-log_cabbin.items = bag()
-
-tall_trees1.items = bag()
-
-tall_trees2.items = bag()
-
-tall_trees6.items = bag()
 #Add Items to Bags     #this is where i put the items into the "bags"
 log_cabbin.items.add(key)
 
@@ -85,19 +80,33 @@ tall_trees6.items.add(herb)
 #Define any variables    #this is wheree all the variables are kept
 current_room = spawn_area
 
-inventory = bag()
+inventory = Bag()
 
 herb_count = 0
+
+dungeon_lock=True
+
 #Binds    #this is where the binds for the game are stored like the function to look or move
 
 @when ("go DIRECTION")
+@when ("DIRECTION")
 def travel(direction):
 	global current_room
-	if direction in current_room.exits():
+	global dungeon_lock
+	if direction in current_room.exits() and current_room.exit(direction) != Dungeon:
 		current_room = current_room.exit(direction)
 		print(f"you go {direction}.")
 		print(current_room)
 		print(current_room.exits())
+	elif direction in current_room.exits() and current_room.exit(direction) == Dungeon:
+		if dungeon_lock:
+			print('This door is locked, how sad.')
+			print(dungeon_lock)
+		else:
+			current_room = current_room.exit(direction)
+			print(f"you go {direction}.")
+			print(current_room)
+			print(current_room.exits())
 
 @when('look')
 def look():
@@ -108,16 +117,21 @@ def look():
 		for item in current_room.item:
 			print(item)
 
-@when('get item')
-@when('take item')
-@when('pick up item')
+@when('get ITEM')
+@when('take ITEM')
+@when('pick up ITEM')
 def pickup(item):
+	#global dungeon_lock
 	if item in current_room.items:
-		if item==herb:
-			herb_count = herb_count+1
 		t = current_room.item.take(item)
 		inventory.add(t)
 		print(f'you pick up the {item}')
+	if item=='herb':
+			herb_count = herb_count+1
+	if item=='key':
+			dungeon_lock=False
+			print(dungeon_lock)
+			
 	else:
 		print(f'you dont see a {item}')
 
@@ -130,7 +144,7 @@ def Player_inventory():
 	for item in inventory:
 		print(item)
 
-@when('look at item')
+@when('look at ITEM')
 def look_at(item):
 	if item in inventory:
 		t = inventory.find(item)
@@ -139,16 +153,17 @@ def look_at(item):
 		print(f'you arent carrying an {item}')
 
 
+
 #Main Function
 
 
 
-def main():
-pritn(current_room)
-	start()
+#def main():
+print(current_room)
+start()
 
 
 
 
-if __name__ == '__main__':
-	main()
+#if __name__ == '__main__':
+	#main()
