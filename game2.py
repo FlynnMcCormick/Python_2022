@@ -86,7 +86,6 @@ herb_count = 0
 dungeon_lock=True
 
 #Binds    #this is where the binds for the game are stored like the function to look or move
-@when ("DIRECTION")
 @when ("go DIRECTION")
 def travel(direction):
 	global current_room
