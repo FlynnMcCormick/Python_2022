@@ -2,10 +2,9 @@ from adventurelib import *
 Room.items = Bag()
 
 #Imports   #this is whee any imports are gonna be like music ect
+
+
 #Define Rooms    #this is where all toe room descriptions are 
-
-
-
 spawn_area = Room("""
 	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the east aswell as a track to the north and south. there is a shimmer to the east.
 	""")
@@ -87,26 +86,16 @@ herb_count = 0
 dungeon_lock=True
 
 #Binds    #this is where the binds for the game are stored like the function to look or move
-
-@when ("go DIRECTION")
 @when ("DIRECTION")
+@when ("go DIRECTION")
 def travel(direction):
 	global current_room
-	global dungeon_lock
-	if direction in current_room.exits() and current_room.exit(direction) != Dungeon:
+	if direction in current_room.exits():
 		current_room = current_room.exit(direction)
 		print(f"you go {direction}.")
 		print(current_room)
 		print(current_room.exits())
-	elif direction in current_room.exits() and current_room.exit(direction) == Dungeon:
-		if dungeon_lock:
-			print('This door is locked, how sad.')
-			print(dungeon_lock)
-		else:
-			current_room = current_room.exit(direction)
-			print(f"you go {direction}.")
-			print(current_room)
-			print(current_room.exits())
+
 
 @when('look')
 def look():
@@ -123,15 +112,11 @@ def look():
 def pickup(item):
 	#global dungeon_lock
 	if item in current_room.items:
-		t = current_room.item.take(item)
+		t = current_room.items.take(item)
 		inventory.add(t)
 		print(f'you pick up the {item}')
-	if item=='herb':
-			herb_count = herb_count+1
-	if item=='key':
-			dungeon_lock=False
-			print(dungeon_lock)
-			
+		if item=='herb':
+			herb_count+= 1
 	else:
 		print(f'you dont see a {item}')
 
@@ -151,6 +136,18 @@ def look_at(item):
 		print(t.description)
 	else:
 		print(f'you arent carrying an {item}')
+
+@when("use ITEM")
+def use(item):
+	if inventory.find(item)== key and current_room == Dungeon:
+		dungeon_lock == false
+		print("You use the key and enter the dungeon")
+		print("To the south is the escape pod. Can you use the secret code?")
+	if inventory.find(item)== sword and current_room == Dungeon:
+		print("the beast is slain ")
+		print("you have won the game")
+	else:
+		print("You can't use that here")
 
 
 
