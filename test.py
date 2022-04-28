@@ -186,7 +186,7 @@ user_friends=input(int('how many friends do you have?'))
 print('\n')
 print(f'{user_apples} / {user_friends}')
 print('\n')
-#Qu18 """ 
+#Qu18 
 user_pizza=int(input('how many pizzas do you want?'))
 print('\n')
 user_friends=int(input('how many people are coming over for pizza?'))
@@ -194,4 +194,9 @@ print('\n')
 user_pizza2 = input(user_pizza*8)
 user_slices = input(f'{user_pizza2}/{user_friends}')
 print(f'each friend gets {user_slices}.')
-#qu2
+print('\n')
+user_money = int(input('how much money do you have'))
+print('')
+""" 
+import random
+print(random.randint(1, 2))

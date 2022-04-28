@@ -1,44 +1,45 @@
 from adventurelib import *
 Room.items = Bag()
 #Imports   #this is whee any imports are gonna be like music ect
-
+import random
+#screenapp.oi 
 
 #Define Rooms    #this is where all toe room descriptions are 
 spawn_area = Room("""
-	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the west as well as a hut to the east. there are exits to the north, east, south, and west.
+	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the west as well as a hut to the east. there are exits to 
 	""")
 
 log_cabbin = Room("""
-	there is a small cooking space in the south east corner of the house and a large bed covered in animal hide in the south west corner of the room. there is a exit to the east.
+	there is a small cooking space in the south east corner of the house and a large bed covered in animal hide in the south west corner of the room. there is a exit 
 	""")
 
 
 tall_trees1 = Room("""
-	you are faced with tall trees streched across the path. there is a small patch of herbs here. the past leads west. 
+	you are faced with tall trees streched across the path. there is a small patch of herbs here. there are exits to
 	""")
 
 tall_trees2 = Room("""
-	you are faced with tall trees streched across the path.there is a small patch of herbs here.  the past leads east and west. 
+	you are faced with tall trees streched across the path.there is a small patch of herbs here.  there are exits to
 	""")
 
 tall_trees3 = Room("""
-	you are faced with tall trees streched across the path. the past leads north and south.
+	you are faced with tall trees streched across the path. there are exits to
 	""")
 
 tall_trees4 = Room("""
-	you are faced with tall trees streched across the path. the past leads north and south. 
+	you are faced with tall trees streched across the path.  there are exits to
 	""")
 
 tall_trees5 = Room("""
-	you are faced with tall trees streched across the path. the past leads east and west. 
+	you are faced with tall trees streched across the path.  there are exits to 
 	""")
 
 tall_trees6 = Room("""
-	you are faced with tall trees streched across the path. there is a small patch of herbs here. the past leads east and west. 
+	you are faced with tall trees streched across the path. there is a small patch of herbs here.  there are exits to
 	""")
 
 elder_hut = Room("""
-	you enter the hutt and are greeted by an eldely woman. she challenges you to find three herbs if you do and return to me i will reward you with a sword. 
+	you enter the hutt and are greeted by an eldely woman. she challenges you to find three herbs if you do and return to me i will reward you with a sword.  there are exits to
 	""")
 
 Dungeon = Room("""
@@ -77,7 +78,7 @@ tall_trees2.items.add(herb)
 
 tall_trees6.items.add(herb)
 
-
+elder_hut.items.add(sword)
 
 #Define any variables    #this is wheree all the variables are kept
 current_room = spawn_area
@@ -89,19 +90,23 @@ herb_count = 0
 
 dungeon_lock = True 
 
+
 #Binds    #this is where the binds for the game are stored like the function to look or move
 @when ("go DIRECTION")
 def travel(direction):
 	global current_room
 	global dungeon_lock
+	if current_room == Dungeon and inventory.find('key') == None:
+		print("you have died")
+		quit()
+
 	if direction in current_room.exits():
 		current_room = current_room.exit(direction)
 		print(f"you go {direction}.")
 		print(current_room)
 		print(current_room.exits())
-	if current_room == Dungeon and inventory.find('key') == None:
-		print("you have died")
-		quit()
+
+
 
 @when('look')
 def look():
@@ -121,8 +126,14 @@ def pickup(item):
 		t = current_room.items.take(item)
 		inventory.add(t)
 		print(f'you pick up the {item}')
+
 	else:
 		print(f'you dont see a {item}')
+
+	if  inventory.find('sword'):
+		herb_count = 0 
+
+
 
 	if item =='herb':
 		herb_count += 1
@@ -133,9 +144,12 @@ def pickup(item):
 @when('show inventory')
 @when('what is in my pockets')
 def Player_inventory():
+	global herb_count
 	print('you are carrying')
 	for item in inventory:
 		print(item)
+	if inventory.find(item)== 'herb':
+		print(f'you have {herb_count} herbs')
 
 @when('look at ITEM')
 def look_at(item):
@@ -147,13 +161,17 @@ def look_at(item):
 
 @when("use ITEM")
 def use(item):
-	if inventory.find(item)== key and current_room == Dungeon:
-		dungeon_lock == false
-		print("You use the key and enter the dungeon")
-		print("To the south is the escape pod. Can you use the secret code?")
+#	if inventory.find(item)== key and current_room == Dungeon:
+	#	dungeon_lock == false
+	#	print("You use the key and enter the dungeon")
+	#	print("To the south is the escape pod. Can you use the secret code?")
 	if inventory.find(item)== sword and current_room == Dungeon:
-		print("the beast is slain ")
-		print("you have won the game")
+		sword_rand_num = (random.randint(1, 6))
+		if sword_rand_num <= 4:
+		   print('the beast has defeat you')
+		   quit()
+		if sword_rand_num >= 3:
+		   print('you slay the beast')
 	else:
 		print("You can't use that here")
 
