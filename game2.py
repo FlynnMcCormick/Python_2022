@@ -4,13 +4,13 @@ Room.items = Bag()
 import random
 #screenapp.oi 
 
-#Define Rooms    #this is where all toe room descriptions are 
+#Define Rooms    #this is where all the room descriptions are 
 spawn_area = Room("""
-	you are in a over grown field surounded by lush forests on all sides. there is a small log cabbin to the west as well as a hut to the east. there are exits to 
+	You're on an overgrown area surrounded on all sides by lush woodlands. A key can be found on the seat next to the door. To the west, there is a tiny log cabbin, and to the east, there is a hut. There are exits available to the
 	""")
 
 log_cabbin = Room("""
-	there is a small cooking space in the south east corner of the house and a large bed covered in animal hide in the south west corner of the room. there is a exit 
+	In the south east corner of the house, there is a little cooking area, and in the south west corner, there is a huge bed covered in animal skin. There is a way out to the
 	""")
 
 
@@ -39,11 +39,11 @@ tall_trees6 = Room("""
 	""")
 
 elder_hut = Room("""
-	you enter the hutt and are greeted by an eldely woman. she challenges you to find three herbs if you do and return to me i will reward you with a sword.  there are exits to
+	An elderly woman greets you as you enter the hutt. She challenges you to gather three herbs and bring them back to me, and if you do, I'll give you a sword. There are exits to the
 	""")
 
 Dungeon = Room("""
-	you creep through the huge brick walls. the doors slam shut behind you. you see a cyclops. he looks at you through his large eye. you hve 2 options fight or die. 
+You make your way through the massive brick walls. Behind you, the doors crash shut. You come across a cyclops. Through his huge eye, he looks at you. You have two choices: fight or perish.
 	""")
 #Define Connections     #this is where the rooms connect to eachother so you can travel between them
 spawn_area.south = tall_trees4
