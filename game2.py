@@ -92,6 +92,8 @@ dungeon_lock = True
 
 
 #Binds    #this is where the binds for the game are stored like the function to look or move
+
+#this function allows you to move around the map
 @when ("go DIRECTION")
 def travel(direction):
 	global current_room
@@ -107,7 +109,7 @@ def travel(direction):
 		print(current_room.exits())
 
 
-
+#this function allows you to look around the room you are in 
 @when('look')
 def look():
 	print(current_room)
@@ -117,6 +119,7 @@ def look():
 		for item in current_room.item:
 			print(item)
 
+#this allows you to pick up items
 @when('get ITEM')
 @when('take ITEM')
 @when('pick up ITEM')
@@ -133,13 +136,12 @@ def pickup(item):
 	if  inventory.find('sword'):
 		herb_count = 0 
 
-
-
 	if item =='herb':
 		herb_count += 1
 		print(f'you have {herb_count} herb')
 
 
+#this allows you to see whats in you inventory
 @when('inventory')
 @when('show inventory')
 @when('what is in my pockets')
@@ -151,6 +153,7 @@ def Player_inventory():
 	if inventory.find(item)== 'herb':
 		print(f'you have {herb_count} herbs')
 
+#this function allows you to look at the item 
 @when('look at ITEM')
 def look_at(item):
 	if item in inventory:
@@ -159,6 +162,8 @@ def look_at(item):
 	else:
 		print(f'you arent carrying an {item}')
 
+
+#this is the bind that makes the player use items
 @when("use ITEM")
 def use(item):
 #	if inventory.find(item)== key and current_room == Dungeon:
